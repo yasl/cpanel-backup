@@ -1,0 +1,12 @@
+A very simple pair of scripts for automating backups of a cPanel site.
+
+cpanel_backup.sh performs a full backup, including of all user databases, but
+mysql_backup.sh is provided so that smaller, more frequent backups may be taken
+of the database/s alone.
+
+These should be invoked by a cron job.  The resulting archives need to be
+copied off site, but these scripts do not provide a mechanism for that at
+present.
+
+It is assumed that cURL, GnuPG, mysqldump, gzip and bzip2 are available in the
+environment.

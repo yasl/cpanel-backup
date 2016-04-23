@@ -1,0 +1,56 @@
+### Common ###
+
+# The home directory of the cPanel account being backed up (the cPanel backups
+# should end up here) and the directory in which to store finished backup files.
+HOME="/home/user"
+BACKUP_DIR="${HOME}/backups"
+
+# List of GPG keys against which to encrypt the backups.
+# These must be imported into the keyring beforehand.
+GPGKEYS=(
+  '0x0123456789ABCDEF'
+)
+
+
+### cPanel ###
+
+# The hostname of the cPanel instance and the username to use.
+CP_DOMAIN="triumph.lunarbreeze.com"
+CP_USER="AzureDiamond"
+
+# The "skin" or "theme" used by the cPanel instance, as given by the Stats in
+# the cPanel home page and in the path, eg:
+# https://example.com:2083/cpsess1234567890/frontend/**x3**/index.html
+CP_SKIN="x3"
+
+# By default, we sleep for 3 minutes after asking cPanel to create a backup
+# before trying to post-process it.  This may need to be tweaked up on large
+# sites, and could be made much shorter on small ones.
+WAITSECS="180"
+
+# A netrc file lets us keep the password out of the command and env vars.
+# Don't forget to create one at ~/.netrc.  A minimum one would look like:
+#
+# machine cpanel.example.com login AzureDiamond password hunter2
+#
+
+
+### MySQL ###
+
+# Using a defaults file keeps the password out of the command and env vars.
+# A minimum one would look like:
+#
+# [client]
+# protocol="TCP"
+# host="localhost"
+# user="AzureDiamond"
+# password="hunter2"
+#
+DEFAULTS_FILE="${HOME}/.my.cnf"
+
+# The list of tables to dump.
+TABLES=(
+  'user_table1'
+  'user_table2'
+  'sometable3'
+)
